@@ -1,0 +1,89 @@
+\documentclass[11pt,\lang,twoside,a4paper]{article}
+\usepackage[a4paper,top=3.5cm,bottom=3.5cm,inner=4.5cm,outer=2.5cm,marginparwidth=1.75cm]{geometry}
+%\documentclass[11pt,\lang,a4paper]{article} use for one-sided
+%\usepackage[a4paper,top=3.5cm,bottom=3.5cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\newcommand{\myFontSize}[0] {12pt}
+\usepackage{pdfpages}
+\usepackage{dirtree}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{setspace}
+\usepackage{lscape}
+\usepackage{afterpage}
+\usepackage{lipsum}
+\usepackage{ifthen}
+\usepackage{xcolor}
+\usepackage{etoolbox}
+\usepackage[IL2]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{listing}
+\usepackage{listings}
+\usepackage{titlesec}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{etoolbox}
+\usepackage{tabularx}
+\usepackage{fancyhdr}
+\usepackage{titling}
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{3}
+
+
+\newsavebox\mybox
+\pagestyle{fancy}
+\lhead{\nouppercase{\leftmark}}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+
+\newbool{mark}
+\global\booltrue{mark}
+\newcommand{\new}[1]{\textcolor{\ifbool{mark}{blue}{black}}{#1}}
+
+%% PRETTIFICATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\edef\restoreparindent{\parindent=\the\parindent\relax}
+\usepackage{parskip}
+\restoreparindent
+\usepackage{enumitem}
+\setlist[itemize]{parsep=3pt}
+\setlist[enumerate]{parsep=3pt}
+\addtolength{\topskip}{0pt plus 10pt} % to help allow short pages
+
+% No indent on page start
+\newcounter{parno}
+\makeatletter
+\newcommand{\newparb}[2]{\global\@namedef{mypar@b#1}{#2}}
+\newcommand{\newpare}[2]{\global\@namedef{mypar@e#1}{#2}}
+\newpare{0}{0}
+\let\oldpar\par
+\def\par{\oldpar\protected@write\@auxout{}{\string\newpare{\theparno}{\thepage}}}
+\makeatother
+
+\emergencystretch=1em
+\usepackage[splitrule]{footmisc}
+\interfootnotelinepenalty=10000
+
+\widowpenalties 1 10000
+\raggedbottom
+
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% FIX BIBLIOGRAPHY  SPACING %%%%%%%%%%%%%%%%%%%%%%%
+\apptocmd{\sloppy}{\hbadness 10000\relax}{}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage[style=iso-numeric,sorting=none]{biblatex}

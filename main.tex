@@ -1,0 +1,45 @@
+% SETTINGS - LANGUAGE
+\newcommand{\lang}{english}  % english or slovak
+
+% SETTINGS - NAMES
+\newcommand{\myTitle}[0] {My cool title in English}
+\newcommand{\myTitleSK}[0] {My cool title in Slovak}
+\newcommand{\myName}[0] {Jane Doe}
+\newcommand{\mySupervisor}[0] {John Doe}
+\newcommand{\myEvidenceNumber}[0] {FIIT-xxxxxx-xxxxx}
+\newcommand{\myDate}[0] {May 2023}
+\newcommand{\myDateSK}[0] {Máj 2023}
+\newcommand{\myStudyProgram}[0] {My study program in English}
+\newcommand{\myStudyProgramSK}[0] {My study program in Slovak}
+\newcommand{\myDegreeCourse}[0] {ENG Course name}
+\newcommand{\myDegreeCourseSK}[0] {SVK Course name}
+\newcommand{\myInstitute}[0] {Institute of Informatics and Software Engineering, FIIT STU, Bratislava}
+\newcommand{\myInstituteSK}[0] {Inštitút Informatiky a Softvérového Inžinierstva, FIIT STU, Bratislava}
+
+\input{preamble/preamble}
+
+\addbibresource{references_raw.bib} % Change to references.bib if using Mendeley or Zotaro (I highly recommend Zotaro)
+
+% Custom paragraph commands, either \myparagraph or \mysubparagraph
+\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\vspace{8pt}\\}
+\newcommand{\mysubparagraph}[1]{\paragraph*{#1}\mbox{}\vspace{8pt}\\}
+
+\begin{document}
+\input{preamble/preamble_doc}
+
+\include{content/maintext1} % Feel free to add more
+
+
+\newpage
+\begingroup \hbadness 10000 \relax \printbibliography
+\endgroup
+
+\newpage
+\appendix
+
+\include{appendices/workplan1.tex}
+
+\newpage
+\include{appendices/workplan2.tex}
+
+\end{document}

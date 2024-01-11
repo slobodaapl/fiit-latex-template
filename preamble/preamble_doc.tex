@@ -1,0 +1,43 @@
+%%%%% PRETTIFICATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\interlinepenalty=1000 % force pars on new pages
+\makeatletter
+\everypar={%
+    \stepcounter{parno}%
+    \ifnum \@nameuse{mypar@b\theparno}=\@nameuse{mypar@e\@arabic{\numexpr\value{parno}-1}}%
+    \else\setbox0\lastbox\fi
+    \protected@write\@auxout{}{\string\newparb{\theparno}{\thepage}}%
+}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlingpage}
+\include{preamble/title}
+\include{preamble/assignment}
+\include{preamble/honour}
+\include{preamble/acknowledgements}
+\include{preamble/annotation}
+\end{titlingpage}
+
+\clearpage
+\pagenumbering{arabic}
+
+\newpage
+\newgeometry{top=2.5cm,bottom=2.5cm,inner=4.5cm,outer=2.5cm}
+\let\tmp\oddsidemargin
+\let\oddsidemargin\evensidemargin
+\let\evensidemargin\tmp
+\reversemarginpar
+\tableofcontents
+\thispagestyle{empty}
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+\restoregeometry
+
+\let\tmp\oddsidemargin
+\let\oddsidemargin\evensidemargin
+\let\evensidemargin\tmp
+\reversemarginpar
+
+\setlength{\headheight}{13.59999pt}
+\addtolength{\topmargin}{-1.59999pt}
+
+\pagenumbering{arabic} % resets `page` counter to 1
